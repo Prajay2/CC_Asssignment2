@@ -1,6 +1,6 @@
 ## Cluster Creation AWS SPARK:
- 1.	Navigate to the EMR console and then click on create new instance.
- 2.	Provide the name for your cluster.
+ 1.	GO to the EMR console and then click on create new instance.
+ 2. Name  your cluster.
  3.	In cluster Termination, change to manual from automatic.
  4.	Provide the key_pair which is a .pem file in security configuration
  
@@ -19,17 +19,7 @@
  3. Then run “spark-submit s3://wineprecdit/training.py”. It runs the file from S3 bucket and creates a ML model
  4. Then run “spark-submit s3://wineprecdit/prediction.py s3://wineprecdit/ValidationDataset.csv”. It uses the model created and validates the data from the csv file and provides the result. 
 
-## Execution with Docker
- 1. Run the below commands to start the docker in the EC2.
- 2. sudo systemctl start docker
- 3. sudo systemctl enable docker
 
-Get the image from docker repo using the below command.
 
- 1. sudo docker pull abishek183/wine_predict:train
- 2. sudo docker pull abishek183/wine_predict:predict
+
  
- 3. Run the train tag image to create a ML model using the below command.
-    >>> sudo docker run -v /home/ec2-user/:/job abishek183/wine_predict:train
- 4. Run the image with predict tag to get the accuracy.
- >>>  sudo docker run -v /home/ec2-user/:/job abishek183/wine_predict:predict ValidationDataset.csv
