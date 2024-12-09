@@ -1,24 +1,32 @@
-## Cluster Creation AWS SPARK:
- 1.	GO to the EMR console and then click on create new instance.
- 2. Name  your cluster.
- 3.	In cluster Termination, change to manual from automatic.
- 4.	Provide the key_pair which is a .pem file in security configuration
- 
- 5.	In instance creation, provide 1 for core and 4 for tasks as we need to run on 4 EC2 instances.
- 6.	Then select default roles for the IAM roles.
- 
- 7.	Create a S3 queue to upload the python and csv files.
- s3://wineprecdit
- 
- 8.	Open terminal and use the below command to connect to the cluster.
- ssh -i ~/newproject2.pem hadoop@ec2-52-201-250-228.compute-1.amazonaws.com
+## Steps:
+1) ssh into 4 instances
+2) use the following and repeat the steps for all 4:
+ssh-keygen -t rsa-N “”-f /home/ubuntu/.ssh/id_rsa
+Cd .ssh
+ls-lrt
+ →to get all the public keys from everywhere use the below command,
+cat ~/.ssh/id_rsa.pub
 
-## Execution without Docker
- 1. Run “sudo su” command to change user.
- 2. Install numpy by using ‘pip install numpy --user’
- 3. Then run “spark-submit s3://wineprecdit/training.py”. It runs the file from S3 bucket and creates a ML model
- 4. Then run “spark-submit s3://wineprecdit/prediction.py s3://wineprecdit/ValidationDataset.csv”. It uses the model created and validates the data from the csv file and provides the result. 
+3) vim authorized_keys (copy paste all 4 keys in all 4 instances)
 
+4) cd
+sudo vim /etc/hosts
+<ip-address> nn
+<ip-address> dd1
+...
+..           dd3
+
+5) Install java, maven, spark-3.4.1
+
+workers.template is inside : $SPARK_HOME/conf/workers
+
+6) Do : cp workers.template workers
+
+7) Then vim  in workers -->
+ put the below after localhost
+dd1/ip-address
+dd2/ip-address
+dd3/ip-address
 
 
 
