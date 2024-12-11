@@ -187,7 +187,7 @@ CMD ["spark-submit", "--master", "local", "--class", "com.example.WineQualityEva
 To build the Docker image, run:
 
 ```bash
-sudo docker build -t prajaypatil/wine-quality-eval:latest .
+sudo docker build -t prajaypatil/wine-pred:latest .
 ```
 
 ---
@@ -196,7 +196,7 @@ sudo docker build -t prajaypatil/wine-quality-eval:latest .
 Once the image is built, you can push it to Docker Hub:
 
 ```bash
-sudo docker push prajaypatil/wine-quality-eval:latest
+sudo docker push prajaypatil/wine-pred:latest 
 ```
 
 Make sure you're logged in to Docker Hub using:
@@ -211,7 +211,7 @@ sudo docker login
 To pull the image on the desired instances, run the following command on each instance:
 
 ```bash
-sudo docker pull prajaypatil/wine-quality-eval:latest
+sudo docker pull prajaypatil/wine-pred:latest 
 ```
 
 ---
@@ -220,7 +220,7 @@ sudo docker pull prajaypatil/wine-quality-eval:latest
 Once the image is pulled, you can run it with:
 
 ```bash
-sudo docker run -it --entrypoint /bin/bash prajaypatil/wine-quality-eval:latest
+sudo docker run -it --entrypoint /bin/bash prajaypatil/wine-pred:latest 
 ```
 
 This will start the container and open a bash shell inside the container. You can then execute any further commands required.
