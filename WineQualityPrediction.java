@@ -6,8 +6,8 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.functions;
 import org.apache.spark.ml.feature.VectorAssembler;
 import org.apache.spark.ml.feature.StandardScaler;
-import org.apache.spark.ml.classification.LinearSVC;
-import org.apache.spark.ml.classification.LinearSVCModel;
+import org.apache.spark.ml.classification.LogisticRegression;
+import org.apache.spark.ml.classification.LogisticRegressionModel;
 
 import java.io.IOException;
 
@@ -63,18 +63,17 @@ public class WineQualityPrediction {
         trainingData = scaler.fit(trainingData).transform(trainingData);
         testingData = scaler.fit(testingData).transform(testingData);
 
-        // Support Vector Classifier Model
-        LinearSVC svc = new LinearSVC()
+        // Logistic Regression Model
+        LogisticRegression logisticRegression = new LogisticRegression()
                 .setMaxIter(1000)
                 .setFeaturesCol("scaledFeatures")
                 .setLabelCol("quality");
 
-        LinearSVCModel svcModel = svc.fit(trainingData);
+        LogisticRegressionModel logisticRegressionModel = logisticRegression.fit(trainingData);
 
         // Save the trained model
-        svcModel.write().overwrite().save("file:///home/ubuntu/WineQualityPredictionModel");
+        logisticRegressionModel.write().overwrite().save("file:///home/ubuntu/WineQualityPredictionModel");
 
         spark.stop();
     }
 }
-
