@@ -89,17 +89,18 @@ Install Spark 3.4.1:
 
 1. Download Spark from the official link (e.g., Spark 3.4.1):
 ```bash
-wget https://archive.apache.org/dist/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.2.tgz
+wget https://archive.apache.org/dist/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
+
 ```
 
 2. Extract Spark:
 ```bash
-tar -xvzf spark-3.4.1-bin-hadoop3.2.tgz
+tar -xvzf spark-3.4.1-bin-hadoop3.tgz
 ```
 
 3. Set Spark environment variables:
 ```bash
-echo "export SPARK_HOME=/home/ubuntu/spark-3.4.1-bin-hadoop3.2" >> ~/.bashrc
+echo "export SPARK_HOME=/home/ubuntu/spark-3.4.1-bin-hadoop3" >> ~/.bashrc
 echo "export PATH=\$SPARK_HOME/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
