@@ -232,3 +232,9 @@ To run the Spark job within the Docker container, use the following command:
 
 ```bash
 spark-submit --master spark://<master-ip>:7077 --class com.example.WineQualityEval /app/WineQualityEval/target/wine-quality-eval-1.0-SNAPSHOT.jar
+
+### 16. Results
+The F1 score of  validation dataset is:
+
+```
+F1 Score: 0.8104636591478698
